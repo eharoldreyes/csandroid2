@@ -14,12 +14,12 @@ import java.util.List;
  * edgar.reyes@flatplanet.com.au
  */
 
-public class AbtApi {
+public class Api {
 
-    public static final String TAG = AbtApi.class.getSimpleName();
+    public static final String TAG = Api.class.getSimpleName();
 
-    private static volatile AbtApi sSoleInstance;
-    private final AbtClient mAbtClient;
+    private static volatile Api sSoleInstance;
+    private final Client mAbtClient;
     private final DaoSession dbSession;
 
     private User authorizedUser;
@@ -51,18 +51,18 @@ public class AbtApi {
         }
     }
 
-    public static AbtApi getInstance(Application app, AbtClient abtClient) {
+    public static Api getInstance(Application app, Client abtClient) {
         if (sSoleInstance == null) {
-            synchronized (AbtApi.class) {
+            synchronized (Api.class) {
                 if (sSoleInstance == null)
-                    sSoleInstance = new AbtApi(app, abtClient);
+                    sSoleInstance = new Api(app, abtClient);
             }
         }
 
         return sSoleInstance;
     }
 
-    private AbtApi(Application app, AbtClient abtClient) {
+    private Api(Application app, Client abtClient) {
         if (sSoleInstance != null) {
             throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         } else {

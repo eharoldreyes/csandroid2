@@ -3,8 +3,8 @@ package com.example.android.harold.deps;
 import android.app.Application;
 
 import com.example.android.harold.BuildConfig;
-import com.example.android.harold.api.AbtApi;
-import com.example.android.harold.api.AbtClient;
+import com.example.android.harold.api.Api;
+import com.example.android.harold.api.Client;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,15 +88,15 @@ public class NetworkModule {
     @Provides
     @Singleton
     //@SuppressWarnings("unused")
-    public AbtClient providesNetworkService(Retrofit retrofit) {
-        return retrofit.create(AbtClient.class);
+    public Client providesNetworkService(Retrofit retrofit) {
+        return retrofit.create(Client.class);
     }
 
     @Provides
     @Singleton
     //@SuppressWarnings("unused")
-    public AbtApi providesService(AbtClient networkAbtClient) {
-        return AbtApi.getInstance(app, networkAbtClient);
+    public Api providesService(Client networkAbtClient) {
+        return Api.getInstance(app, networkAbtClient);
     }
 
 
